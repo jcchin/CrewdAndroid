@@ -1,0 +1,79 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc"
+    tools:context="co.getcrewd.crewd.FullscreenActivity">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+    <TextView android:id="@+id/fullscreen_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:keepScreenOn="true"
+        android:textColor="#33b5e5"
+        android:textStyle="bold"
+        android:textSize="50sp"
+        android:gravity="center"
+        android:text="@string/first_content" />
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout android:id="@+id/fullscreen_content_controls"
+            style="?metaButtonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <Button android:id="@+id/dummy_button"
+                style="?metaButtonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/work_button"
+                android:onClick="startWorkout"/>
+            <Button android:id="@+id/dummy_button2"
+                style="?metaButtonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/race_button"
+                android:onClick="startRace"/>
+
+        </LinearLayout>
+
+        <ListView
+            android:layout_width="339dp"
+            android:layout_height="245dp"
+            android:id="@+id/listView"
+            android:layout_gravity="center_vertical|right|top" />
+
+        <TextView
+            android:layout_width="256dp"
+            android:layout_height="64dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/list_category"
+            android:id="@+id/textView2"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_vertical" />
+
+        <TextView
+            android:layout_width="264dp"
+            android:layout_height="87dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/header"
+            android:id="@+id/textView"
+            android:layout_gravity="left|top"
+            android:gravity="center_vertical|center_horizontal" />
+
+    </FrameLayout>
+
+</FrameLayout>
