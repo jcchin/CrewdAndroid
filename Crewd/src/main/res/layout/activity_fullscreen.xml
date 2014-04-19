@@ -50,6 +50,30 @@
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="139dp"
+            android:layout_height="89dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/header"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal|top"
+            android:gravity="center_vertical|center_horizontal" />
+
+        <TextView
+            android:layout_width="210dp"
+            android:layout_height="106dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/list_category"
+            android:id="@+id/textView2"
+            android:layout_gravity="left|top"
+            android:gravity="center_horizontal|bottom" />
+
+        <ListView
+            android:layout_width="339dp"
+            android:layout_height="230dp"
+            android:id="@+id/listView"
+            android:layout_gravity="right|center_vertical" />
+
     </FrameLayout>
 
 </FrameLayout>

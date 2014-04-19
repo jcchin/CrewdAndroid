@@ -2,6 +2,8 @@
 <resources>
 
     <string name="app_name">Crewd</string>
+    <string name="header">Welcome Back!</string>
+    <string name="list_category">Men\'s Lightweight</string>
     <string name="work_button">Start Workout</string>
     <string name="race_button">Start Race</string>
     <string name="log_button">Save Workout</string>
