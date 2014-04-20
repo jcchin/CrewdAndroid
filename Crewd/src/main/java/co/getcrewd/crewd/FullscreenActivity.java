@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -56,15 +57,12 @@ public class FullscreenActivity extends Activity {
     private SystemUiHider mSystemUiHider;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    public void onConfigurationChanged(Configuration newConfig){
+        super.onConfigurationChanged(newConfig);
         setContentView(R.layout.activity_fullscreen);
-
-        final View controlsView = findViewById(R.id.fullscreen_content_controls);
-        final View contentView = findViewById(R.id.fullscreen_content);
-
-
+        makeList();
+    }
+    public void makeList(){
         final ListView listview = (ListView) findViewById(R.id.listView);
         String[] values = new String[] { "Jeff", "Tristan", "Jen",
                 "Justin", "Alexis", "Chris", "Barb", "Eli" };
@@ -95,6 +93,20 @@ public class FullscreenActivity extends Activity {
             }
 
         });
+
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_fullscreen);
+
+
+        final View controlsView = findViewById(R.id.fullscreen_content_controls);
+        final View contentView = findViewById(R.id.fullscreen_content);
+
+
+        makeList();
 
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
@@ -155,6 +167,7 @@ public class FullscreenActivity extends Activity {
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
     }
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
