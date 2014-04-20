@@ -75,11 +75,43 @@ public class FullscreenActivity extends Activity {
                 android.R.layout.simple_list_item_1, list);
         listview.setAdapter(adapter);
 
+        Rower rower;
+
+        ArrayList<Rower> rowers = new ArrayList<Rower>();
+
+        rower = new Rower();
+        rower.setName("Justin");
+        rower.setSplit("6:30");
+        rowers.add(rower);
+
+        rower = new Rower();
+        rower.setName("Eli");
+        rower.setSplit("7:05");
+        rowers.add(rower);
+
+        rower = new Rower();
+        rower.setName("Tristan");
+        rower.setSplit("7:09");
+        rowers.add(rower);
+
+        rower = new Rower();
+        rower.setName("Chris");
+        rower.setSplit("7:20");
+        rowers.add(rower);
+
+        rower = new Rower();
+        rower.setName("Eric");
+        rower.setSplit("7:22");
+        rowers.add(rower);
+
+        listview.setAdapter(new MyAdapter(this, rowers));
+
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, final View view,
                                     int position, long id) {
+                /*
                 final String item = (String) parent.getItemAtPosition(position);
                 view.animate().setDuration(2000).alpha(0)
                         .withEndAction(new Runnable() {
@@ -90,6 +122,7 @@ public class FullscreenActivity extends Activity {
                                 view.setAlpha(1);
                             }
                         });
+                        */
             }
 
         });
