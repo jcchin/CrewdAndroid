@@ -4,7 +4,12 @@
     android:layout_height="match_parent"
     android:background="#0099cc"
     tools:context="co.getcrewd.crewd.FullscreenActivity">
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/lake5"
+        android:scaleType = "centerCrop" />
+    <!-- https://www.flickr.com/photos/dougtone/5124874356/in/photolist-8NSjAG-7AKJrw-7AKSgm-6jRgpD-7AKRUh-9NhTfe-DbekB-b4tSuK-4Es2r1-6Ldkn2-4umPoi-azi1jJ-4FTx9z-4BEVrN-cbYZSJ-67ocUK-cG1uzC-4uncYg-4y6wQ9-fc6y4G-b4zosg-fPHMxM-4QMZWf-7eJDuc-5fsbNS-GSoLY-4SkFMu-5MH8pV-6PLH4c-7dPz43-7eAcL8-5bYNea-8ARERb-awvkAp-aNS3k2-6GtVkE-7zgxYv-5KSgEV-6mCxRA-6oddDy-8KhQEy-9yJotH-5BW9sA-cZNSvU-5LMMBW-5QUA3T-6tabW1-aE6ThC-5nf9qW-5buQaf# -->
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
@@ -120,6 +125,15 @@
             android:layout_marginTop="130dp"
             android:layout_marginLeft="220dp"
             android:gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="\@DougKerr"
+            android:id="@+id/textView7"
+            android:layout_gravity="right|top"
+            android:textSize="10dp" />
 
     </FrameLayout>
 
