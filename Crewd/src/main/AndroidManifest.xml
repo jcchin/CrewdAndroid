@@ -22,12 +22,33 @@
             android:name="co.getcrewd.crewd.FullscreenActivity2"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_fullscreen_activity2"
-            android:theme="@style/Theme.AppCompat"
-            android:parentActivityName="co.getcrewd.crewd.FullscreenActivity" >
+            android:parentActivityName="co.getcrewd.crewd.FullscreenActivity"
+            android:theme="@style/Theme.AppCompat" >
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="co.getcrewd.crewd.FullscreenActivity" />
+        </activity>
+        <activity
+            android:name="co.getcrewd.crewd.FinalStats"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_final_stats"
+            android:parentActivityName="co.getcrewd.crewd.FullscreenActivity"
+            android:theme="@style/FullscreenTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="FullscreenActivity" />
+        </activity>
+        <activity
+            android:name="co.getcrewd.crewd.RaceActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_race"
+            android:parentActivityName="co.getcrewd.crewd.FullscreenActivity"
+            android:theme="@style/FullscreenTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="FullscreenActivity" />
         </activity>
     </application>
 

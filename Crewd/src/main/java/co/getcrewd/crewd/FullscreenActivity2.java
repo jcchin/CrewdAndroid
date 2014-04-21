@@ -4,6 +4,7 @@ import co.getcrewd.crewd.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -172,5 +173,12 @@ public class FullscreenActivity2 extends ActionBarActivity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
+
+    public void finishWorkout(View view) {
+        // Do something in response to button
+        Intent intent = new Intent(this, FinalStats.class);
+        startActivity(intent);
+
     }
 }

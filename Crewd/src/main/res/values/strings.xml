@@ -7,8 +7,17 @@
     <string name="work_button">Start Workout</string>
     <string name="race_button">Start Race</string>
     <string name="log_button">Save Workout</string>
-    <string name="first_content">First\nActivity</string>
+    <string name="cancel_button">Quit Race</string>
     <string name="workout_content">Workout\nActivity</string>
-    <string name="title_activity_fullscreen_activity2">FullscreenActivity2</string>
+    <string name="race_content">Race\nActivity</string>
+    <string name="title_activity_fullscreen_activity2">Workout</string>
+    <string name="title_race_activity">Race</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="title_activity_final_stats">FinalStats</string>
+    <string name="details_button">See Details</string>
+    <string name="upload_button">Send Data</string>
+    <string name="dummy_content">Workout\nStats</string>
+    <string name="title_activity_race">RaceActivity</string>
 
 </resources>

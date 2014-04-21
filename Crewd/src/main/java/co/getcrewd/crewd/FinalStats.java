@@ -4,21 +4,13 @@ import co.getcrewd.crewd.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.view.MenuItem;
+import android.support.v4.app.NavUtils;
 
 
 /**
@@ -27,7 +19,7 @@ import java.util.List;
  *
  * @see SystemUiHider
  */
-public class FullscreenActivity extends Activity {
+public class FinalStats extends Activity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -38,7 +30,7 @@ public class FullscreenActivity extends Activity {
      * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
      * user interaction before hiding the system UI.
      */
-    private static final int AUTO_HIDE_DELAY_MILLIS = 10000;
+    private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
 
     /**
      * If set, will toggle the system UI visibility upon interaction. Otherwise,
@@ -57,79 +49,14 @@ public class FullscreenActivity extends Activity {
     private SystemUiHider mSystemUiHider;
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig){
-        super.onConfigurationChanged(newConfig);
-        setContentView(R.layout.activity_fullscreen);
-        makeList();
-    }
-    public void makeList(){
-        final ListView listview = (ListView) findViewById(R.id.listView);
-
-        Rower rower;
-
-        ArrayList<Rower> rowers = new ArrayList<Rower>();
-
-        rower = new Rower();
-        rower.setName("Justin");
-        rower.setSplit("6:30");
-        rowers.add(rower);
-
-        rower = new Rower();
-        rower.setName("Eli");
-        rower.setSplit("7:05");
-        rowers.add(rower);
-
-        rower = new Rower();
-        rower.setName("Tristan");
-        rower.setSplit("7:09");
-        rowers.add(rower);
-
-        rower = new Rower();
-        rower.setName("Chris");
-        rower.setSplit("7:20");
-        rowers.add(rower);
-
-        rower = new Rower();
-        rower.setName("Eric");
-        rower.setSplit("7:22");
-        rowers.add(rower);
-
-        listview.setAdapter(new MyAdapter(this, rowers));
-
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, final View view,
-                                    int position, long id) {
-                /*
-                final String item = (String) parent.getItemAtPosition(position);
-                view.animate().setDuration(2000).alpha(0)
-                        .withEndAction(new Runnable() {
-                            @Override
-                            public void run() {
-                                list.remove(item);
-                                adapter.notifyDataSetChanged();
-                                view.setAlpha(1);
-                            }
-                        });
-                        */
-            }
-
-        });
-
-    }
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_fullscreen);
-
+        setContentView(R.layout.activity_final_stats);
+        setupActionBar();
 
         final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);
-
-
-        makeList();
 
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
@@ -188,9 +115,9 @@ public class FullscreenActivity extends Activity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+        findViewById(R.id.details_button).setOnTouchListener(mDelayHideTouchListener);
+        findViewById(R.id.upload_button).setOnTouchListener(mDelayHideTouchListener);
     }
-
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -202,6 +129,35 @@ public class FullscreenActivity extends Activity {
         delayedHide(100);
     }
 
+    /**
+     * Set up the {@link android.app.ActionBar}, if the API is available.
+     */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    private void setupActionBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            // Show the Up button in the action bar.
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            // This ID represents the Home or Up button. In the case of this
+            // activity, the Up button is shown. Use NavUtils to allow users
+            // to navigate up one level in the application structure. For
+            // more details, see the Navigation pattern on Android Design:
+            //
+            // http://developer.android.com/design/patterns/navigation.html#up-vs-back
+            //
+            // TODO: If Settings has multiple levels, Up should navigate up
+            // that hierarchy.
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     /**
      * Touch listener to use for in-layout UI controls to delay hiding the
@@ -234,43 +190,4 @@ public class FullscreenActivity extends Activity {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
-
-    public void startWorkout(View view) {
-        // Do something in response to button
-        Intent intent = new Intent(this, FullscreenActivity2.class);
-        startActivity(intent);
-
-    }
-    public void startRace(View view) {
-        // Do something in response to button
-        Intent intent = new Intent(this, RaceActivity.class);
-        startActivity(intent);
-
-    }
-
-    private class StableArrayAdapter extends ArrayAdapter<String> {
-
-        HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
-
-        public StableArrayAdapter(Context context, int textViewResourceId,
-                                  List<String> objects) {
-            super(context, textViewResourceId, objects);
-            for (int i = 0; i < objects.size(); ++i) {
-                mIdMap.put(objects.get(i), i);
-            }
-        }
-
-        @Override
-        public long getItemId(int position) {
-            String item = getItem(position);
-            return mIdMap.get(item);
-        }
-
-        @Override
-        public boolean hasStableIds() {
-            return true;
-        }
-
-    }
-
 }
